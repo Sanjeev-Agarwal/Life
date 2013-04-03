@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Life.API", "Life.API\Life.API.csproj", "{02C382C1-466B-4E89-89AC-54133BD0B35C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Life.Test", "Life.Test\Life.Test.csproj", "{0F1F9A09-F9E0-4C2E-89EE-317FB9263F25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Life.Console", "Life.Console\Life.Console.csproj", "{7B40D11A-4DCC-4C95-A255-1C7F1A90C8A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02C382C1-466B-4E89-89AC-54133BD0B35C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02C382C1-466B-4E89-89AC-54133BD0B35C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02C382C1-466B-4E89-89AC-54133BD0B35C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02C382C1-466B-4E89-89AC-54133BD0B35C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F1F9A09-F9E0-4C2E-89EE-317FB9263F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F1F9A09-F9E0-4C2E-89EE-317FB9263F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F1F9A09-F9E0-4C2E-89EE-317FB9263F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F1F9A09-F9E0-4C2E-89EE-317FB9263F25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B40D11A-4DCC-4C95-A255-1C7F1A90C8A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B40D11A-4DCC-4C95-A255-1C7F1A90C8A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B40D11A-4DCC-4C95-A255-1C7F1A90C8A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B40D11A-4DCC-4C95-A255-1C7F1A90C8A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
