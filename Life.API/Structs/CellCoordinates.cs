@@ -9,11 +9,11 @@ namespace Life.API.Structs
     /// <summary>
     /// structure to hold x and y indices of grid cell
     /// </summary>
-    public struct CoOrdinates
+    public struct CellCoordinates
     {
         public int X;
         public int Y;
-        public CoOrdinates(int x, int y)
+        public CellCoordinates(int x, int y)
         {
             X = x;
             Y = y;

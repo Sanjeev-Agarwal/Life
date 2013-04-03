@@ -144,7 +144,7 @@ namespace Life.API
             {
                 Parallel.For(0, _inputGrid.ColumnCount, y =>
                 {
-                    Rule.ChangeCellsState(_inputGrid, _outputGrid, new CoOrdinates(x, y));
+                    Rule.ChangeCellsState(_inputGrid, _outputGrid, new CellCoordinates(x, y));
                 });
             }));
         }
