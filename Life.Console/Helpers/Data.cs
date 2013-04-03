@@ -11,7 +11,6 @@ namespace Life.Console.Helpers
     {
         public static Game Block(byte maxGenerations)
         {
-            // Simple Pattern
             var objLifeGame = new Game(4, 4);
             objLifeGame.ToggleGridCell(1, 1);
             objLifeGame.ToggleGridCell(1, 2);

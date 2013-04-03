@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Life.API.Helpers;
 
 namespace Life.API
 {
     public class Row
     {
-        private const string ArgumentOutOfBound = "Argument out of bound";
-
+        
         //list of cells
         public List<Cell> Cells { get; set; }
 
@@ -20,8 +20,8 @@ namespace Life.API
         /// <returns>returns cell</returns>
         public Cell this[int y]
         {
-            get { if (Cells.Count >= y) throw new ArgumentOutOfRangeException(ArgumentOutOfBound); return Cells[y]; }
-            set { if (Cells.Count >= y) throw new ArgumentOutOfRangeException(ArgumentOutOfBound); Cells[y] = value; }
+            get { if (Cells.Count >= y) throw new ArgumentOutOfRangeException(ExceptionHelper.ArgumentOutOfBound); return Cells[y]; }
+            set { if (Cells.Count >= y) throw new ArgumentOutOfRangeException(ExceptionHelper.ArgumentOutOfBound); Cells[y] = value; }
         }
         /// <summary>
         /// initialize list of cells
@@ -46,7 +46,7 @@ namespace Life.API
         /// <param name="columnCount"></param>
         public void InsertCell(int index, Cell cell, int columnCount)
         {
-            if (index < 0 || index >= columnCount) throw new ArgumentOutOfRangeException("Invalid Index value: must be greater than zero and less than Column count");
+            if (index < 0 || index >= columnCount) throw new ArgumentOutOfRangeException(ExceptionHelper.ArgumentNullExceptionForUnreachableCoordinates);
             Cells.Insert(index, cell);
         }
 

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Life.API.Helpers;
 
 namespace Life.API
 {
     public class Grid
     {
-        private const string ArgumentOutOfBound = "Argument out of bound";
         // List of Rows in Grid        
         public List<Row> GridObj { set; get; }
 
@@ -30,8 +30,8 @@ namespace Life.API
         /// <returns>returns cell</returns>
         public Cell this[int x, int y]
         {
-            get { if (GridObj.Count <= x || ColumnCount <= y) throw new ArgumentOutOfRangeException(ArgumentOutOfBound); return GridObj[x].Cells[y]; }
-            set { if (GridObj.Count <= x || ColumnCount <= y) throw new ArgumentOutOfRangeException(ArgumentOutOfBound); GridObj[x].Cells[y] = value; }
+            get { if (GridObj.Count <= x || ColumnCount <= y) throw new ArgumentOutOfRangeException(ExceptionHelper.ArgumentOutOfBound); return GridObj[x].Cells[y]; }
+            set { if (GridObj.Count <= x || ColumnCount <= y) throw new ArgumentOutOfRangeException(ExceptionHelper.ArgumentOutOfBound); GridObj[x].Cells[y] = value; }
         }
         /// <summary>
         /// Indexer to get grid row by using index for ease of use
@@ -40,8 +40,8 @@ namespace Life.API
         /// <returns>returns row</returns>
         public Row this[int x]
         {
-            get { if (GridObj.Count <= x) throw new ArgumentOutOfRangeException(ArgumentOutOfBound); return GridObj[x]; }
-            set { if (GridObj.Count <= x) throw new ArgumentOutOfRangeException(ArgumentOutOfBound); GridObj[x] = value; }
+            get { if (GridObj.Count <= x) throw new ArgumentOutOfRangeException(ExceptionHelper.ArgumentOutOfBound); return GridObj[x]; }
+            set { if (GridObj.Count <= x) throw new ArgumentOutOfRangeException(ExceptionHelper.ArgumentOutOfBound); GridObj[x] = value; }
         }
         // Get number of rows in grid
         public int RowCount { get { return GridObj.Count; } }
@@ -62,7 +62,7 @@ namespace Life.API
         /// <param name="columns"></param>
         private void Setup(int rows, int columns)
         {
-            if (rows <= 0 || columns <= 0) throw new ArgumentOutOfRangeException("Row and Column size must be greater than zero");
+            if (rows <= 0 || columns <= 0) throw new ArgumentOutOfRangeException(ExceptionHelper.ArgumentOutOfRangeExceptionForCell);
             GridObj = new List<Row>();
             for (var i = 0; i < rows; i++)
             {
@@ -83,7 +83,7 @@ namespace Life.API
         /// <param name="y"></param>        
         public void ToggleCell(int x, int y)
         {
-            if (GridObj.Count <= x || ColumnCount <= y) throw new ArgumentNullException("Cell doesn't have data for required indexes");
+            if (GridObj.Count <= x || ColumnCount <= y) throw new ArgumentNullException(ExceptionHelper.ArgumentNullExceptionForCell);
             this[x, y].IsAlive = !this[x, y].IsAlive;
         }
         /// <summary>
@@ -93,7 +93,7 @@ namespace Life.API
         /// <param name="row"></param>
         public void InsertRow(int index, Row row)
         {
-            if (index < 0 || index >= RowCount) throw new ArgumentOutOfRangeException("Invalid Index value: must be greater than or equal to zero and less than Row count");
+            if (index < 0 || index >= RowCount) throw new ArgumentOutOfRangeException(ExceptionHelper.ArgumentNullExceptionForUnreachableCoordinates);
             GridObj.Insert(index, row);
         }
 

@@ -15,15 +15,19 @@ namespace Life.API
         public Grid InputGrid { get { return _inputGrid; } }  // input grod
         public Grid OutputGrid { get { return _outputGrid; } } // output grid
         //There are two Task for the Game of Life 
+        
         // 1. Task for changing all existing Cell Status        
         private Task _evaluateCellTask;
+        
         // 2. Task for expanding output gird if respective rule satifies
         private Task _evaluateGridGrowthTask;
+
         // MaxGeneration is used to restrict generations of grid changes
         public byte MaxGenerations = 1; //set deafult as 1
 
         // Get number of rows in grid
         public int RowCount { get { return InputGrid.RowCount; } }
+        
         // Get or Set number of columns in grid
         public int ColumnCount { get { return InputGrid.ColumnCount; } }
 
@@ -36,7 +40,7 @@ namespace Life.API
         /// <param name="columns"></param>
         public Game(int rows, int columns)
         {
-            if (rows <= 0 || columns <= 0) throw new ArgumentOutOfRangeException("Row and Column size must be greater than zero");
+            if (rows <= 0 || columns <= 0) throw new ArgumentOutOfRangeException(ExceptionHelper.ArgumentOutOfRangeExceptionForCell);
             _inputGrid = new Grid(rows, columns);
             _outputGrid = new Grid(rows, columns);
             RuleHelper.InitializeReachableCells();
@@ -49,7 +53,7 @@ namespace Life.API
         /// <param name="y"></param>
         public void ToggleGridCell(int x, int y)
         {
-            if (_inputGrid.RowCount <= x || _inputGrid.ColumnCount <= y) throw new ArgumentOutOfRangeException("Argument out of bound");
+            if (_inputGrid.RowCount <= x || _inputGrid.ColumnCount <= y) throw new ArgumentOutOfRangeException(ExceptionHelper.ArgumentOutOfBound);
             _inputGrid.ToggleCell(x, y);
 
         }
@@ -73,11 +77,6 @@ namespace Life.API
                 currentGeneration++;
                 // Process current generation for next generation
                 ProcessGeneration();
-
-                //*** un comment the below lines to see generation results after every 500 millisseconds  Note that tests will fail in console.clear() after uncommenting***
-                //System.Threading.Thread.Sleep(500);
-                //Console.Clear();
-                //*** un comment the above lines to see generation results after every 500 millisseconds Note that tests will fail in console.clear() after uncommenting***
 
                 Console.WriteLine("Generation: " + currentGeneration);
                 // Display the input grid
@@ -104,6 +103,7 @@ namespace Life.API
             if ((_evaluateCellTask == null) || (_evaluateCellTask != null && _evaluateCellTask.IsCompleted))
             {
                 _evaluateCellTask = ChangeCellsState();
+                
                 // ensure that Output grid existing cells are updated. 
                 //Otherwise it may result in unpredictable result in output grid if row or column is added in parallel
                 _evaluateCellTask.Wait();
@@ -154,8 +154,7 @@ namespace Life.API
         /// <returns>returns EvaluateGridGrowthTask</returns>
         private Task ChangeGridState()
         {
-            return Task.Factory.StartNew(() => Rule.ChangeGridState(_inputGrid, _outputGrid)
-                );
+            return Task.Factory.StartNew(() => Rule.ChangeGridState(_inputGrid, _outputGrid));
         }
     }
 }

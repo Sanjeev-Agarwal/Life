@@ -44,6 +44,7 @@
     <Compile Include="Enums\GamePattern.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Grid.cs" />
+    <Compile Include="Helpers\ExceptionHelper.cs" />
     <Compile Include="Helpers\RuleHelper.cs" />
     <Compile Include="Helpers\GridHelper.cs" />
     <Compile Include="Rule.cs" />

@@ -44,18 +44,18 @@ namespace Life.API.Helpers
         {
             while (targetGrid.RowCount < sourceGrid.RowCount)
             {
-                Row newRow = new Row();
-                for (int k = 0; k < targetGrid.ColumnCount; k++)
+                var newRow = new Row();
+                for (var k = 0; k < targetGrid.ColumnCount; k++)
                 {
-                    Cell newCell = new Cell(false);
+                    var newCell = new Cell(false);
                     newRow.AddCell(newCell);
                 }
                 targetGrid.AddRow(newRow);
             }
             while (targetGrid.ColumnCount < sourceGrid.ColumnCount)
             {
-                Cell cell = new Cell(false);
-                for (int k = 0; k < targetGrid.RowCount; k++)
+                var cell = new Cell(false);
+                for (var k = 0; k < targetGrid.RowCount; k++)
                 {
                     targetGrid[k].AddCell(cell);
                 }
@@ -71,9 +71,9 @@ namespace Life.API.Helpers
         /// <param name="targetGrid"></param>
         private static void AssignCellValues(Grid sourceGrid, Grid targetGrid)
         {
-            for (int i = 0; i < sourceGrid.RowCount; i++)
+            for (var i = 0; i < sourceGrid.RowCount; i++)
             {
-                for (int j = 0; j < sourceGrid.ColumnCount; j++)
+                for (var j = 0; j < sourceGrid.ColumnCount; j++)
                 {
                     targetGrid[i, j].IsAlive = sourceGrid[i, j].IsAlive;
                 }

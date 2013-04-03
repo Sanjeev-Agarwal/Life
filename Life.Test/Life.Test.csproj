@@ -53,8 +53,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="GameTest.cs" />
+    <Compile Include="GridTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RuleTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Life.API\Life.API.csproj">

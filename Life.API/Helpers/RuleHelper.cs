@@ -5,7 +5,7 @@ using Life.API.Structs;
 
 namespace Life.API.Helpers
 {
-    static class RuleHelper
+    public static class RuleHelper
     {
         // Dictionary to hold list of reachable cells co-ordinates for specified cell type
         public static Dictionary<CellType, List<CellCoordinates>> ReachableCells;
@@ -171,7 +171,7 @@ namespace Life.API.Helpers
         {
             if ((coOrdinates.X < -1 || coOrdinates.X > grid.RowCount) || (coOrdinates.Y < -1 || coOrdinates.Y > grid.ColumnCount))
             {
-                throw new ArgumentOutOfRangeException("Invalid Index value: must be greater than or equal to minus one and less than or equal to Row count");
+                throw new ArgumentOutOfRangeException(ExceptionHelper.ArgumentNullExceptionForUnreachableCoordinates);
             }
             var enumCellType = CellType.None;
             if (coOrdinates.X == 0 && coOrdinates.Y == 0)

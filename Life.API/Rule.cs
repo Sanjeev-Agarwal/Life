@@ -23,7 +23,6 @@ namespace Life.API
             {
                 if (HasAliveInNextState(inputGrid[cellCoordinates.X, cellCoordinates.Y], liveNeighbourCount))
                 {
-
                     //set output grid's cell to live only if it is in alive status in next generation
                     outputGrid[cellCoordinates.X, cellCoordinates.Y].IsAlive = true;
                 }
@@ -42,10 +41,13 @@ namespace Life.API
         {
             // Get the Cell type of current cell
             CellType enumInnerCell = RuleHelper.GetCellType(grid, cellCoordinates);
+
             List<CellCoordinates> reachableCells;
+            
             // populate reachable cells from current cell for easier traversing
             RuleHelper.ReachableCells.TryGetValue(enumInnerCell, out reachableCells);
-            if (reachableCells != null && reachableCells.Count == 0) throw new ArgumentNullException("Cannot find reachable co-ordinates");
+            
+            if (reachableCells != null && reachableCells.Count == 0) throw new ArgumentNullException(ExceptionHelper.ArgumentNullExceptionForUnreachableCoordinates);
             return reachableCells.Sum(coOrds => HasAliveNeighbour(grid, cellCoordinates, coOrds));
         }
 
@@ -62,6 +64,7 @@ namespace Life.API
             var live = 0; // set default as 0
             var x = baseCoordinates.X + offSetCoordinates.X; // get x axis of neighbour
             var y = baseCoordinates.Y + offSetCoordinates.Y; // get y axis of neighbour
+            
             // check the computed bound is within range of grid, if it is not within bounds live is 0 as default
             if ((x >= 0 && x < grid.RowCount) && y >= 0 && y < grid.ColumnCount)
             {
@@ -83,14 +86,12 @@ namespace Life.API
             var alive = false;
             if (cell.IsAlive)
             {
-                // if cell is alive and 2 or 3 ajacent cells are alive then set it to alive in next generation
-                if (liveNeighbourCount == 2 || liveNeighbourCount == 3)
+                if (liveNeighbourCount == 2 || liveNeighbourCount == 3) // if cell is alive and 2 or 3 ajacent cells are alive then set it to alive in next generation
                 {
                     alive = true;
                 }
             }
-            // if cell is dead and 3 adjacent cells are alive then set it to alive in next generation
-            else if (liveNeighbourCount == 3)
+            else if (liveNeighbourCount == 3) // if cell is dead and 3 adjacent cells are alive then set it to alive in next generation
             {
                 alive = true;
             }
@@ -120,7 +121,7 @@ namespace Life.API
         {
             //Create a whole new column in the beginning or end if rule is satified for any of the cell
             var columnCreatedFlag = false;
-            //Boolean IsPreviousCellsFilled = false;
+
             // start with the index 1  until 1 less than last index as index 0 and last index cannot have 3 live adjacent cell in any case
             // This index 0 and last index must be included if rule is changed in future; dead can alive with 2 live adjacent cells
             for (var i = 1; i < inputGrid.RowCount - 1; i++)
@@ -129,12 +130,9 @@ namespace Life.API
                 {
                     if (columnCreatedFlag == false)
                     {
-                        //if (IsPreviousCellsFilled == false)
-                        //{
                         for (var k = 0; k < outputGrid.RowCount; k++)
                         {
-                            // Fill all cells with false
-                            var newDeadCell = new Cell(false);
+                            var newDeadCell = new Cell(false);  // Fill all cells with false
                             if (colId == -1)
                             {
                                 outputGrid[k].InsertCell(0, newDeadCell, outputGrid.ColumnCount);
@@ -144,17 +142,16 @@ namespace Life.API
                                 outputGrid[k].AddCell(newDeadCell);
                             }
                         }
-                        //    IsPreviousCellsFilled = true;
-                        //}
                         // increment column count to 1
                         outputGrid.ColumnCount += 1;
                         columnCreatedFlag = true;
                     }
-                    int yAxis = (colId == -1) ? 0 : outputGrid.ColumnCount - 1;
+                    var yAxis = (colId == -1) ? 0 : outputGrid.ColumnCount - 1;
                     outputGrid[i, yAxis].IsAlive = true;
                 }
             }
         }
+
         /// <summary>
         /// Check if rule satisfies to expand row
         /// </summary>
@@ -164,8 +161,8 @@ namespace Life.API
         private static void CheckRowGrowth(Grid inputGrid, Grid outputGrid, int rowId)
         {
             //Create a whole new row in the beginning or end if rule is satified for any of the cell
-            Boolean rowCreatedFlag = false;
-            //Boolean IsPreviousCellsFilled = false;
+            var rowCreatedFlag = false;
+            
             // start with the index 1  until 1 less than last index as index 0 and last index cannot have 3 live adjacent cell in any case
             // This index 0 and last index must be included if rule is changed in future; dead can alive with 2 live adjacent cells
             for (var j = 1; j < inputGrid.ColumnCount - 1; j++)
@@ -175,16 +172,12 @@ namespace Life.API
                     if (rowCreatedFlag == false)
                     {
                         var newRow = new Row();
-                        //if (IsPreviousCellsFilled == false)
-                        //{
                         for (var k = 0; k < outputGrid.ColumnCount; k++)
                         {
                             // Fill all cells with false
                             var newDeadCell = new Cell(false);
                             newRow.AddCell(newDeadCell);
                         }
-                        //IsPreviousCellsFilled = true;
-                        //}
                         if (rowId == -1)
                         {
                             outputGrid.InsertRow(0, newRow);
