@@ -11,7 +11,7 @@ namespace Life.Test
         #region "Postive tests"
 
         /// <summary>
-        /// A test for Game Constructor
+        ///     A test for Game Constructor
         /// </summary>
         [TestMethod]
         public void GameConstructorPositiveTest()
@@ -36,49 +36,47 @@ namespace Life.Test
         public void ToggleGridCellPositiveTest()
         {
             //Arrange
-            int rows = 2;
-            int columns = 3;
+            const int rows = 2;
+            const int columns = 3;
+            const int x = 1;
+            const int y = 2;
 
-            var target = new Game(rows, columns);
-            int x = 1;
-            int y = 2;
-
+          
             //Act
+            var target = new Game(rows, columns);
             target.ToggleGridCell(x, y);
 
             //Assert
             Assert.AreEqual(target.InputGrid[1, 2].IsAlive, true);
         }
 
-     
 
-        ///<summary>
-        ///A test for validating MaxGeneration value
-        ///</summary>
+        /// <summary>
+        ///     A test for validating MaxGeneration value
+        /// </summary>
         [TestMethod]
         public void MaxGenerationTest()
         {
             //Arrange
-            int rows = 2;
-            int columns = 2;
+            const int rows = 2;
+            const int columns = 2;
 
             //Act
-            var target = new Game(rows, columns);
-            target.MaxGenerations = 2;
+            var target = new Game(rows, columns) {MaxGenerations = 2};
 
             //Assert
             Assert.AreEqual(target.MaxGenerations, 2);
         }
 
-        ///<summary>
-        ///A default test for Init
-        ///</summary>
+        /// <summary>
+        ///     A default test for Init
+        /// </summary>
         [TestMethod]
         public void InitDefaultValueTest()
         {
             //Arrange
-            int rows = 2;
-            int columns = 2;
+            const int rows = 2;
+            const int columns = 2;
 
             //Act
             var target = new Game(rows, columns);
@@ -91,13 +89,15 @@ namespace Life.Test
             Assert.AreEqual(target.InputGrid[1, 1].IsAlive, false);
         }
 
-#endregion
+        #endregion
+
         #region "Negative Tests"
+
         /// <summary>
         ///     A test for Game Constructor
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException), ExceptionHelper.ArgumentOutOfRangeExceptionForCell)]
+        [ExpectedException(typeof (ArgumentOutOfRangeException), ExceptionHelper.ArgumentOutOfRangeExceptionForCell)]
         public void GameConstructorExceptionTest1()
         {
             const int rows = -1;
@@ -109,11 +109,11 @@ namespace Life.Test
         ///     A test for Game Constructor
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException), ExceptionHelper.ArgumentOutOfRangeExceptionForCell)]
+        [ExpectedException(typeof (ArgumentOutOfRangeException), ExceptionHelper.ArgumentOutOfRangeExceptionForCell)]
         public void GameConstructorExceptionTest2()
         {
-            int rows = 0;
-            int columns = -1;
+            const int rows = 0;
+            const int columns = -1;
             var target = new Game(rows, columns);
         }
 
@@ -121,11 +121,11 @@ namespace Life.Test
         ///     A test for Game Constructor
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException), ExceptionHelper.ArgumentOutOfRangeExceptionForCell)]
+        [ExpectedException(typeof (ArgumentOutOfRangeException), ExceptionHelper.ArgumentOutOfRangeExceptionForCell)]
         public void GameConstructorExceptionTest3()
         {
-            int rows = 0;
-            int columns = 0;
+            const int rows = 0;
+            const int columns = 0;
             var target = new Game(rows, columns);
         }
 
@@ -133,14 +133,15 @@ namespace Life.Test
         ///     A test for ToggleGridCell
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException), ExceptionHelper.ArgumentOutOfBound)]
+        [ExpectedException(typeof (ArgumentOutOfRangeException), ExceptionHelper.ArgumentOutOfBound)]
         public void ToggleGridCellExceptionTest1()
         {
-            int rows = 1;
-            int columns = 0;
+            const int rows = 1;
+            const int columns = 0;
+            const int x = 0;
+            const int y = 0;
+          
             var target = new Game(rows, columns);
-            int x = 0;
-            int y = 0;
             target.ToggleGridCell(x, y);
         }
 
@@ -148,34 +149,37 @@ namespace Life.Test
         ///     A test for ToggleGridCell
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException), ExceptionHelper.ArgumentOutOfBound)]
+        [ExpectedException(typeof (ArgumentOutOfRangeException), ExceptionHelper.ArgumentOutOfBound)]
         public void ToggleGridCellExcecptinoTest2()
         {
-            int rows = 0;
-            int columns = 1;
+            const int rows = 0;
+            const int columns = 1;
             var target = new Game(rows, columns);
-            int x = 1;
-            int y = 1;
+            const int x = 1;
+            const int y = 1;
             target.ToggleGridCell(x, y);
         }
 
-        ///<summary>
-        /// A test for ToggleGridCell
-        ///</summary>
+        /// <summary>
+        ///     A test for ToggleGridCell
+        /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException), ExceptionHelper.ArgumentOutOfBound)]
+        [ExpectedException(typeof (ArgumentOutOfRangeException), ExceptionHelper.ArgumentOutOfBound)]
         public void ToggleGridCellExceptionTest2()
         {
-            int rows = 2;
-            int columns = 3;
+            const int rows = 2;
+            const int columns = 3;
+            const int x = 3;
+            const int y = 3;
+            
             var target = new Game(rows, columns);
-            int x = 3;
-            int y = 3;
             target.ToggleGridCell(x, y);
         }
 
         #endregion
+
         #region "Pattern Tests"
+
         /// <summary>
         ///     A Block pattern test for Init
         /// </summary>
@@ -183,8 +187,8 @@ namespace Life.Test
         public void InitBlockPatternTest()
         {
             //Arrange
-            int rows = 2;
-            int columns = 2;
+            const int rows = 2;
+            const int columns = 2;
 
             //Act
             var target = new Game(rows, columns);
@@ -192,8 +196,8 @@ namespace Life.Test
             target.ToggleGridCell(0, 1);
             target.ToggleGridCell(1, 0);
             target.ToggleGridCell(1, 1);
-            target.MaxGenerations = 100;
-            // This pattern remains unchanged for infinite generation, testing it for 100 generations
+            target.MaxGenerations = 99;
+            // This pattern remains unchanged for infinite generation, testing it for 99 generations
             target.Init();
 
             //Assert
@@ -210,11 +214,11 @@ namespace Life.Test
         public void InitBoatPatternTest()
         {
             //Arrange
-            int rows = 3;
-            int columns = 3;
-            var target = new Game(rows, columns);
-
+            const int rows = 3;
+            const int columns = 3;
+           
             //Act
+            var target = new Game(rows, columns);
             target.ToggleGridCell(0, 0);
             target.ToggleGridCell(0, 1);
             target.ToggleGridCell(1, 0);
@@ -238,8 +242,8 @@ namespace Life.Test
         public void InitBlinkerPatternTest()
         {
             //Arrange
-            int rows = 3;
-            int columns = 3;
+            const int rows = 3;
+            const int columns = 3;
 
             //Act
             var target = new Game(rows, columns);
@@ -262,8 +266,8 @@ namespace Life.Test
         public void InitToadPattern1Test()
         {
             //Arrange
-            int rows = 2;
-            int columns = 4;
+            const int rows = 2;
+            const int columns = 4;
 
             //Act
             var target = new Game(rows, columns);
@@ -291,8 +295,8 @@ namespace Life.Test
         public void InitToadPattern2Test()
         {
             //Arrange
-            int rows = 4;
-            int columns = 2;
+            const int rows = 4;
+            const int columns = 2;
             var target = new Game(rows, columns);
 
             //Act
@@ -312,7 +316,7 @@ namespace Life.Test
             Assert.AreEqual(target.InputGrid[3, 1].IsAlive, true);
             Assert.AreEqual(target.InputGrid[3, 2].IsAlive, true);
         }
-        #endregion
 
+        #endregion
     }
 }

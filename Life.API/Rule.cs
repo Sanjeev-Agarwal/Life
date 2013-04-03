@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Life.API.Enums;
+﻿using Life.API.Enums;
 using Life.API.Helpers;
 using Life.API.Structs;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Life.API
 {

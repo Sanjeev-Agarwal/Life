@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Life.API.Contracts;
+using System;
 
 namespace Life.API
 {
-    public class Cell
+    public class Cell : ICell
     {
         public Cell(Boolean isAlive)
         {

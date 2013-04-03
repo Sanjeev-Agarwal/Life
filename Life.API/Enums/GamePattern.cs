@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Life.API.Enums
 {
     /// <summary>
@@ -12,10 +7,10 @@ namespace Life.API.Enums
     /// </summary>
     public enum GamePattern
     {
+        Custom,
         Block,
         Boat,
         Blinker,
-        Custom,
         Toad
     }
 }

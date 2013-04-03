@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Life.API.Enums;
+﻿using Life.API.Enums;
 using Life.API.Structs;
+using System;
+using System.Collections.Generic;
 
 namespace Life.API.Helpers
 {

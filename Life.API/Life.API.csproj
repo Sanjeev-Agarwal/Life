@@ -47,6 +47,9 @@
     <Compile Include="Helpers\ExceptionHelper.cs" />
     <Compile Include="Helpers\RuleHelper.cs" />
     <Compile Include="Helpers\GridHelper.cs" />
+    <Compile Include="Contracts\IRow.cs" />
+    <Compile Include="Contracts\IGrid.cs" />
+    <Compile Include="Contracts\ICell.cs" />
     <Compile Include="Rule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Row.cs" />

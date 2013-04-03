@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Life.API;
+﻿using Life.API;
 using Life.API.Enums;
+using Life.API.Helpers;
 using Life.API.Structs;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Life.API.Helpers;
+using System;
+
 namespace Life.Test
 {
     [TestClass]

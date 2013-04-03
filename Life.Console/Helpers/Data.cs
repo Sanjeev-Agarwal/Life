@@ -44,6 +44,7 @@ namespace Life.Console.Helpers
             objLifeGame.MaxGenerations = maxGenerations;
             return objLifeGame;
         }
+
         public static Game Blinker(byte maxGenerations)
         {
             var objLifeGame = new Game(3, 3);
@@ -52,6 +53,8 @@ namespace Life.Console.Helpers
             objLifeGame.ToggleGridCell(2, 1);
             objLifeGame.MaxGenerations = maxGenerations;
             return objLifeGame;
-        }    
+        }
+
+        
     }
 }

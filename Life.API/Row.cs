@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Life.API.Contracts;
 using Life.API.Helpers;
+using System;
+using System.Collections.Generic;
 
 namespace Life.API
 {
-    public class Row
+    public class Row : IRow
     {
         
         //list of cells

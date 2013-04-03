@@ -1,10 +1,7 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Life.API;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Life.API;
 using Life.API.Helpers;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 namespace Life.Test
 {
     [TestClass]
@@ -38,9 +35,9 @@ namespace Life.Test
         [ExpectedException(typeof(ArgumentOutOfRangeException), ExceptionHelper.ArgumentOutOfRangeExceptionForCell)]
         public void GridConstructorExceptionTest1()
         {
-            int rows = -1;
-            int columns = 0;
-            Grid target = new Grid(rows, columns);
+            const int rows = -1;
+            const int columns = 0;
+            var target = new Grid(rows, columns);
 
         }
         #endregion
